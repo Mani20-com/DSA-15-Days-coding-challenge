@@ -1,0 +1,17 @@
+class Solution(object):
+    def isValid(self, s):
+        st=[]
+        for cur in s:
+            if cur in "({[":
+                st.append(cur)
+            elif not st:
+                return False    
+            elif cur==')' and st[-1]=='(':
+                st.pop()
+            elif cur==']' and st[-1]=='[':
+                st.pop()
+            elif cur=='}' and st[-1]=='{':
+                st.pop()              
+            else:
+                return False
+        return st==[]            
